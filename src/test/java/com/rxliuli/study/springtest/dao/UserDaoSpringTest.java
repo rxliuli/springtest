@@ -21,6 +21,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration(locations = "classpath:/spring/spring-context.xml")
 //使用 SpringJUnit4ClassRunner 来运行 test
 @RunWith(SpringJUnit4ClassRunner.class)
+//为这个测试类开启事物
+@Transactional
+//默认回滚所有数据库操作
+@Rollback
 public class UserDaoSpringTest {
     /**
      * 直接注入 UserDao 就好了
@@ -60,4 +64,5 @@ public class UserDaoSpringTest {
         assertThat(result)
                 .isGreaterThan(0);
     }
+
 }
