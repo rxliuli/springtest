@@ -1,10 +1,12 @@
 package com.rxliuli.study.springtest.entity;
 
+import java.io.Serializable;
+
 /**
  * @author rxliuli
  * @date 2018/7/31
  */
-public class User {
+public class User implements Serializable {
     private Integer id;
     private String name;
     private Boolean sex;
