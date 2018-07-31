@@ -1,7 +1,7 @@
 package com.rxliuli.study.springtest.dao;
 
 import com.rxliuli.study.springtest.entity.User;
-import common.test.BaseTest;
+import common.test.BaseDaoAndServiceTest;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author rxliuli
  * @date 2018/7/31
  */
-public class UserDaoBaseTest extends BaseTest<UserDao> {
+public class UserDaoBaseTest extends BaseDaoAndServiceTest<UserDao> {
     @Test
     public void get() {
         int id = 1;
