@@ -41,4 +41,14 @@ public class UserDao {
     public List<User> listForAll() {
         return jdbcTemplate.query("select * from user", userRowMapper);
     }
+
+    /**
+     * 根据 id 删除用户
+     *
+     * @param id 用户 id
+     * @return 受影响行数
+     */
+    public int deleteById(Integer id) {
+        return jdbcTemplate.update("delete from user where id = ?", id);
+    }
 }

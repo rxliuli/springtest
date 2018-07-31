@@ -45,4 +45,19 @@ public class UserDaoSpringTest {
         assertThat(userList)
                 .isNotEmpty();
     }
+
+    @Test
+    public void deleteById() {
+        int result = userDao.deleteById(1);
+        assertThat(result)
+                .isGreaterThan(0);
+    }
+
+    @Test
+    public void deleteByIdForTransaction() {
+        //这个仅仅是为了测试事物与自动回滚是否生效
+        int result = userDao.deleteById(1);
+        assertThat(result)
+                .isGreaterThan(0);
+    }
 }
