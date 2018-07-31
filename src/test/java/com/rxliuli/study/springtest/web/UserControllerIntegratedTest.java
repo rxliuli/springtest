@@ -11,6 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -26,9 +27,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 @Rollback
 @WebAppConfiguration
-public class UserControllerUnitTest {
+public class UserControllerIntegratedTest {
     @Autowired
-    private UserController userController;
+    private WebApplicationContext context;
     /**
      * 用于测试 API 的模拟请求对象
      */
@@ -36,8 +37,8 @@ public class UserControllerUnitTest {
 
     @Before
     public void before() {
-        //模拟一个 Mvc 测试环境，获取一个 MockMvc 实例
-        mockMvc = MockMvcBuilders.standaloneSetup(userController)
+        //这里把整个 WebApplicationContext 上下文都丢进去了，所以可以测试所有的 Controller
+        mockMvc = MockMvcBuilders.webAppContextSetup(context)
                 .build();
     }
 
